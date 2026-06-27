@@ -942,7 +942,7 @@ static void a_bpc_decode(bpc_handle_t *handle)
             return;                                                                             /* return */
         }
         ind += 2;                                                                               /* index + 2 */
-        data.year = ((uint8_t)temp0 << 4) | ((uint8_t)temp1 << 2) | temp2;                      /* set day */
+        data.year = ((uint8_t)temp0 << 4) | ((uint8_t)temp1 << 2) | temp2;                      /* set year */
         
         res = a_bpc_data_decode(handle, (uint32_t)handle->decode[ind].diff_us, &p4);            /* get data */
         if (res != 0)                                                                           /* check the result */
@@ -1063,7 +1063,7 @@ static void a_bpc_decode(bpc_handle_t *handle)
                 
                 return;                                                                         /* return */
             }
-            data.year = ((uint16_t)1 << 6);                                                     /* add year */
+            data.year += ((uint16_t)1 << 6);                                                    /* add year */
             data.year += 2000;                                                                  /* add 2000 */
         }
         else                                                                                    /* odd, year add */
@@ -1090,7 +1090,7 @@ static void a_bpc_decode(bpc_handle_t *handle)
                 
                 return;                                                                         /* return */
             }
-            data.year = ((uint16_t)1 << 6);                                                     /* add year */
+            data.year += ((uint16_t)1 << 6);                                                    /* add year */
             data.year += 2000;                                                                  /* add 2000 */
         }
         
